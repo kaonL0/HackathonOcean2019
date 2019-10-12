@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Indextran, estran, mer, littoral, reeb, ocean, hackathon">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="B20">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Indextran</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="./lib/papaparse.js"></script>
+</head>
+<body>
+<script type="javascript">
+    // Parse CSV string
+    var data = Papa.parse(csv);
+
+    // Convert back to CSV
+    var csv = Papa.unparse(data);
+
+    // Parse local CSV file
+    Papa.parse(file, {
+        complete: function(results) {
+            console.log("Finished:", results.data);
+        }
+    });
+
+    // Stream big file in worker thread
+    Papa.parse(bigFile, {
+        worker: true,
+        step: function(results) {
+            console.log("Row:", results.data);
+        }
+    });
+</script>
+
+coucocu
+</body>
+</html>
