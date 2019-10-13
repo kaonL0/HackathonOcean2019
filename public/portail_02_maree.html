@@ -62,6 +62,22 @@
             z-index: 10;
         }
 
+        .granite {
+            display: block;
+            position: absolute;
+            top: 30%;
+            left: 5%;
+            z-index: 10;
+        }
+        
+        .ormeau {
+            display: block;
+            position: absolute;
+            top: 40%;
+            left: 30%;
+            z-index: 10;
+        }
+        
         img:hover {
             border: solid white 2px;
         }
@@ -313,12 +329,22 @@
 
                     <button class="w3-btn w3-blue"
                         onclick="document.getElementById('id01').style.display='none'">RETOURNER SUR LE SITE</button>
-                    <button class="w3-btn w3-blue"
+                    
+                    <a href="app_00_auth.html"><button class="w3-btn w3-blue"
                         onclick="document.getElementById('id01').style.display='none'">ESSAYER L'APPLICATION</button>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
+
+    <div>
+        <img id="granite" src="gif/granite_rose.gif" width=11% class="granite">
+    </div>
+
+    <div>
+            <img id="ormeau" src="gif/ormeau.gif" width=11% class="ormeau">
+        </div>
 
     <div>
         <img id="langouste" src="gif/langouste.gif" width=11% class="gifLangouste">
