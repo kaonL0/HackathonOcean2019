@@ -230,6 +230,7 @@
             let url = document.location.href.split('?')
             let colorSediment = url[1].split('=')
 
+            // https://svgjs.com/docs/2.7/referencing
             document.getElementById('draw-shapes').innerHTML = '';
             var svg = SVG('draw-shapes')
                 .size('100%', 480)
@@ -238,12 +239,12 @@
             var rect = svg
                 .rect('100%', '100%')
                 .move(0, params[0] * 20 + '%')
-                .attr({ fill: 'blue' })
+                .attr({ fill: '#0489B1' })
 
             var width = window.innerWidth;
             var ground = svg
                 .path("M 0,0 " + width + ",480 " + width + ",480 0,480 Z")
-                .attr({ fill: (colorSediment[1] === 'sable' ? 'yellow' : 'orange') })
+                .attr({ fill: (colorSediment[1] === 'sable' ? '#F7D358' : '#7E3300') })
         }
 
     </script>
@@ -273,6 +274,50 @@
         <button onclick="currentTime=14;updateDate();">14h</button>
         <button onclick="currentTime=16;updateDate();">16h</button>
         <button onclick="currentTime=18;updateDate();">18h</button>
+
+        <button onclick="document.getElementById('id01').style.display='block'" class="w3-button">?</button>
+
+        <!-- The Modal -->
+        <div id="id01" class="w3-modal" style="z-index: 1000">
+            <div class="w3-modal-content">
+                <div class="w3-container w3-black">
+
+                    <p>Présentation du projet</p>
+                    <ul>
+                        <li>Pour les écoles (Aires marines éducatives)</li>
+                        <li>Pour les éducateurs à l'environnement (science participative et animation)</li>
+                        <li>Un portail pour présenter le dispositif</li>
+                        <li>Une application mobile (PWA) pour aller sur le terrain et apporter une dimension ludique
+                        </li>
+                    </ul>
+
+                    <p>Les méthodes d'identifiaction</p>
+                    <ul>
+                        <li>Avec un guide / sachant</li>
+                        <li>Avec des ressources (livre, encyclopédie en ligne, etc...)</li>
+                        <li>Avec un système expert utilisant des clé d'identification et des simplification visuelles
+                            (silouhettes)</li>
+                        <li>Avec un bon système de machine learning (mais pour ça il faut des données qualifiée et des
+                            images :)</li>
+                    </ul>
+                    <p>Ouestran : L'application pour identifier et découvrir l'estran</p>
+                    <ul>
+                        <li>Prendre des photos et les qualifier (GPS, caractéristique, etc..)</li>
+                        <li>Identifier les espèces avec un système expert et des clés d'identification (Akhenator)</li>
+                        <li>Mini-jeux pour apprendre à identifier les espèces et qualifier la donnée (progression)</li>
+                        <li>Mode défi pour rechercher des espèces sur le terrain en fonction de l'environnement et du
+                            climat</li>
+                        <li>Des fiches espèces, classé par famille, pour découvrir les particularités ainsi que les
+                            projets de science participative existants</li>
+                    </ul>
+
+                    <button class="w3-btn w3-blue"
+                        onclick="document.getElementById('id01').style.display='none'">RETOURNER SUR LE SITE</button>
+                    <button class="w3-btn w3-blue"
+                        onclick="document.getElementById('id01').style.display='none'">ESSAYER L'APPLICATION</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div>
