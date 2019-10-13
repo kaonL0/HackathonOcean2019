@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Indextran, estran, mer, littoral, reeb, ocean, hackathon">
@@ -8,13 +9,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Indextran</title>
+    <link rel="stylesheet" href="css/w3.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden
+        }
 
-    <link rel="stylesheet" href="style.css">
-    <script src="./lib/papaparse.js"></script>
+        svg {
+            position: absolute;
+            top: 250px;
+            left: 0;
+            width: 100%;
+        }
+
+        .ground1 {
+            fill: #ff0;
+            fill-opacity: 1.0
+        }
+
+        .ground2 {
+            fill: #ff0;
+            fill-opacity: 1.0
+        }
+
+        .sea {
+            fill: #00f;
+            fill-opacity: 0.7
+        }
+
+        .draw-shapes>svg {
+            position: absolute;
+            top: 240 !important;
+        }
+
+        .gifLangouste {
+            display: block;
+            position: absolute;
+            top: 40%;
+            left: 43%;
+            z-index: 10;
+        }
+
+        .gifAlgue {
+            display: block;
+            position: absolute;
+            top: 40%;
+            left: 70%;
+            z-index: 10;
+        }
+
+        .granite {
+            display: block;
+            position: absolute;
+            top: 30%;
+            left: 5%;
+            z-index: 10;
+        }
+        
+        .ormeau {
+            display: block;
+            position: absolute;
+            top: 40%;
+            left: 30%;
+            z-index: 10;
+        }
+        
+        img:hover {
+            border: solid white 2px;
+        }
+    </style>
 </head>
-<body>
 
-    <a href="portail_01_carto.html">Presentation</a>
-
+<body class="w3-theme-d1">
+    <div class="w3-center">
+        <h1>Ouestran ®</h1>
+        <a href="portail_01_carto.html"<h3>Identifier les espèces de l'estran</h3></a>
+    </div>
+    <br><br>
+    <center>
+        <img src="images/estran.jpg" width="400px"/>
+        <img src="images/crabe.jpg" width="400px" />
+    </center>
 </body>
+
 </html>

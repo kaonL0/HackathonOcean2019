@@ -45,38 +45,6 @@
             position: absolute;
             top: 240 !important;
         }
-
-        .gifLangouste {
-            display: block;
-            position: absolute;
-            top: 40%;
-            left: 43%;
-            z-index: 10;
-        }
-
-        .gifAlgue {
-            display: block;
-            position: absolute;
-            top: 40%;
-            left: 70%;
-            z-index: 10;
-        }
-
-        .granite {
-            display: block;
-            position: absolute;
-            top: 30%;
-            left: 5%;
-            z-index: 10;
-        }
-        
-        .ormeau {
-            display: block;
-            position: absolute;
-            top: 40%;
-            left: 30%;
-            z-index: 10;
-        }
         
         img:hover {
             border: solid white 2px;
@@ -220,7 +188,7 @@
             let calcRange = getLevelValue();
             let seaHeight = document.getElementById('myRange').value
 
-            msg.innerHTML = brestDataJson[index].day + ' - ' + currentTime + 'h ' + calcRange[0] + 'm';
+            msg.innerHTML = brestDataJson[index].day + ' - ' + currentTime + 'h ' + (7 - calcRange[0]).toFixed(2, 10) + 'm';
             draw(calcRange)
         }
         updateDate();
@@ -258,12 +226,47 @@
                 .attr({ fill: '#0489B1' })
 
             var width = window.innerWidth;
+            width = 1800            
             var ground = svg
                 .path("M 0,0 " + width + ",480 " + width + ",480 0,480 Z")
                 .attr({ fill: (colorSediment[1] === 'sable' ? '#F7D358' : '#7E3300') })
         }
 
     </script>
+
+    <style>
+            .gifLangouste {
+            display: block;
+            position: absolute;
+            top: 55%;
+            left: 43%;
+            z-index: 10;
+        }
+
+        .gifAlgue {
+            display: block;
+            position: absolute;
+            top: 45%;
+            left: 70%;
+            z-index: 10;
+        }
+
+        .granite {
+            display: block;
+            position: absolute;
+            top: 35%;
+            left: 5%;
+            z-index: 10;
+        }
+        
+        .ormeau {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 30%;
+            z-index: 10;
+        }
+        </style>
 </head>
 
 <body class="w3-theme-d1">
