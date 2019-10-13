@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Indextran, estran, mer, littoral, reeb, ocean, hackathon">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="B20">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Indextran</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+    .w3-theme-l5 {color:#000 !important; background-color:#e8f9fe !important}
+    .w3-theme-l4 {color:#000 !important; background-color:#b1e9fc !important}
+    .w3-theme-l3 {color:#000 !important; background-color:#63d4f9 !important}
+    .w3-theme-l2 {color:#fff !important; background-color:#16bef7 !important}
+    .w3-theme-l1 {color:#fff !important; background-color:#0789b5 !important}
+    .w3-theme-d1 {color:#fff !important; background-color:#03475d !important}
+    .w3-theme-d2 {color:#fff !important; background-color:#033f53 !important}
+    .w3-theme-d3 {color:#fff !important; background-color:#033748 !important}
+    .w3-theme-d4 {color:#fff !important; background-color:#022f3e !important}
+    .w3-theme-d5 {color:#fff !important; background-color:#022734 !important}
+
+    .w3-theme-light {color:#000 !important; background-color:#e8f9fe !important}
+    .w3-theme-dark {color:#fff !important; background-color:#022734 !important}
+    .w3-theme-action {color:#fff !important; background-color:#022734 !important}
+
+    .w3-theme {color:#fff !important; background-color:#044f67 !important}
+    .w3-text-theme {color:#044f67 !important}
+    .w3-border-theme {border-color:#044f67 !important}
+
+    .w3-hover-theme:hover {color:#fff !important; background-color:#044f67 !important}
+    .w3-hover-text-theme:hover {color:#044f67 !important}
+    .w3-hover-border-theme:hover {border-color:#044f67 !important}
+ 
+    html, body { margin:0; padding:0; overflow:hidden }
+    svg { position:absolute; top:0; left:0; width:100% }
+
+    .ground1 {
+        fill: #F7D358;
+        fill-opacity: 1.0
+    }
+    .ground2 {
+        fill: #ff0;
+        fill-opacity: 1.0
+    }
+    .sea {
+        fill: #0489B1;
+        fill-opacity: 0.7
+    }
+
+    .gifLangouste{
+        display : block;
+        position : absolute;
+        top : 57%;
+        left : 33%;
+        z-index: 10;
+    }
+
+    .gifAlgue{
+        display : block;
+        position : absolute;
+        top : 50%;
+        left : 65%;
+        z-index: 10;
+    }
+
+    img:hover {
+        border: solid white 2px;
+    }
+    
+    </style>
+    <script>
+        function Polygon() {
+            var pointList = [];
+    
+            this.node = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+    
+            function build(arg) {
+                var res = [];
+                for (var i = 0, l = arg.length; i < l; i++) {
+                    res.push(arg[i].join(','));
+                }
+                return res.join(' ');
+            }
+    
+            this.attribute = function (key, val) {
+                if (val === undefined) return this.node.getAttribute(key);
+                this.node.setAttribute(key, val);
+            };
+    
+            this.getPoint = function (i) {
+                return pointList[i]
+            };
+    
+            this.setPoint = function (i, x, y) {
+                pointList[i] = [x, y];
+                this.attribute('points', build(pointList));
+            };
+    
+            this.points = function () {
+                for (var i = 0, l = arguments.length; i < l; i += 2) {
+                    pointList.push([arguments[i], arguments[i + 1]]);
+                }
+                this.attribute('points', build(pointList));
+            };
+    
+            this.points.apply(this, arguments);
+        }
+        
+        function Position() {
+            console.log("Debut de fonction")
+            var calculLeft = window.innerWidth;
+            var e = document.getElementById("langouste");
+            e.style.left = calculLeft;
+        }
+        var polygon = new Polygon(0, 0, 100, 100, 200, 200);
+        polygon.setPoint(0, 50, 10); // set point and automatically re-build points
+        polygon.points(50, 50, 50, 100, 200, 100); // set everything
+        polygon.attribute('style', 'fill:lime');
+        polygon.node; // refer to the actual     SVG element
+    
+        var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.appendChild(polygon.node);
+        // document.body.appendChild(svg);
+
+        var svg = document.getElementById('mySVG');
+        // svg.appendChild(svg);
+        //svg.appendChild(polygon)
+
+        function myFunction() {
+            document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
+        }
+    </script>
+
+    <script src="./lib/papaparse.js"></script>
+    <script src="./lib/perlin.js"></script>
+</head>
+<body class="w3-theme-d1">
+    <script type="javascript">
+        function update() {
+            let e = document.getElementById('ground');
+            console.log(e.points)
+        }
+        // Parse CSV string
+        const file = '127.0.0.1:8080/data/HTR__ABER_BENOIT_MEAN_RENEAT_157088410148608004.txt';
+        //var data = Papa.parse(file);
+    
+        // Convert back to CSV
+        //var csv = Papa.unparse(data);
+    
+        // Parse local CSV file
+        Papa.parse(file, {
+            complete: function(results) {
+                console.log("Finished:", results.data);
+            }
+        });
+    
+        // Stream big file in worker thread
+        /*
+        Papa.parse(bigFile, {
+            worker: true,
+            step: function(results) {
+                console.log("Row:", results.data);
+            }
+        });
+        */
+    </script>
+            
+    <div>
+        <svg viewBox="0 30 100 100" id="mySVG">
+                <polygon id="sea" class="sea" points="0,100 0,50 100,50 100,100" />
+                <polygon id="ground" class="ground1" points="0,100 0,50 100,80 100,100" />
+        </svg>
+    </div>
+
+    <div> 
+        <img id = "langouste" src="gif/langouste.gif" width=11% class="gifLangouste">
+    </div>
+
+    <div> 
+        <img id = "algue" src="gif/algue.gif" width=33% class="gifAlgue">
+    </div>
+
+    <button onclick="Position();">Update</button>
+    <p id="demo" onclick="Polygon()">Click me.</p>
+
+</body>
+</html>

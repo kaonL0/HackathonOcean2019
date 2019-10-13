@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Indextran, estran, mer, littoral, reeb, ocean, hackathon">
@@ -8,147 +9,283 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Indextran</title>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="css/w3.css">
+    <link rel="stylesheet" href="css/style.css">
     <style>
-    .w3-theme-l5 {color:#000 !important; background-color:#e8f9fe !important}
-    .w3-theme-l4 {color:#000 !important; background-color:#b1e9fc !important}
-    .w3-theme-l3 {color:#000 !important; background-color:#63d4f9 !important}
-    .w3-theme-l2 {color:#fff !important; background-color:#16bef7 !important}
-    .w3-theme-l1 {color:#fff !important; background-color:#0789b5 !important}
-    .w3-theme-d1 {color:#fff !important; background-color:#03475d !important}
-    .w3-theme-d2 {color:#fff !important; background-color:#033f53 !important}
-    .w3-theme-d3 {color:#fff !important; background-color:#033748 !important}
-    .w3-theme-d4 {color:#fff !important; background-color:#022f3e !important}
-    .w3-theme-d5 {color:#fff !important; background-color:#022734 !important}
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden
+        }
 
-    .w3-theme-light {color:#000 !important; background-color:#e8f9fe !important}
-    .w3-theme-dark {color:#fff !important; background-color:#022734 !important}
-    .w3-theme-action {color:#fff !important; background-color:#022734 !important}
+        svg {
+            position: absolute;
+            top: 250px;
+            left: 0;
+            width: 100%;
+        }
 
-    .w3-theme {color:#fff !important; background-color:#044f67 !important}
-    .w3-text-theme {color:#044f67 !important}
-    .w3-border-theme {border-color:#044f67 !important}
+        .ground1 {
+            fill: #ff0;
+            fill-opacity: 1.0
+        }
 
-    .w3-hover-theme:hover {color:#fff !important; background-color:#044f67 !important}
-    .w3-hover-text-theme:hover {color:#044f67 !important}
-    .w3-hover-border-theme:hover {border-color:#044f67 !important}
- 
-    html, body { margin:0; padding:0; overflow:hidden }
-    svg { position:fixed; top:0; left:0; width:100% }
+        .ground2 {
+            fill: #ff0;
+            fill-opacity: 1.0
+        }
 
-    .ground1 {
-        fill: #ff0;
-        fill-opacity: 1.0
-    }
-    .ground2 {
-        fill: #ff0;
-        fill-opacity: 1.0
-    }
-    .sea {
-        fill: #00f;
-        fill-opacity: 0.7
-    }
+        .sea {
+            fill: #00f;
+            fill-opacity: 0.7
+        }
+
+        .draw-shapes>svg {
+            position: absolute;
+            top: 240 !important;
+        }
+
+        .gifLangouste {
+            display: block;
+            position: absolute;
+            top: 40%;
+            left: 43%;
+            z-index: 10;
+        }
+
+        .gifAlgue {
+            display: block;
+            position: absolute;
+            top: 40%;
+            left: 70%;
+            z-index: 10;
+        }
+
+        img:hover {
+            border: solid white 2px;
+        }
     </style>
+    <script type="text/javascript" src="data/annuaire_maree_pleine_basse_mer_hauteur_BREST_20190101.js"></script>
+    <script src="lib/svgjs.js"></script>
     <script>
-        function Polygon() {
-            var pointList = [];
-    
-            this.node = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
-    
-            function build(arg) {
-                var res = [];
-                for (var i = 0, l = arg.length; i < l; i++) {
-                    res.push(arg[i].join(','));
-                }
-                return res.join(' ');
+        const brestDataJson = [];
+
+        function toDate(annee, mois, jour, heureMinutes) {
+            // new Date(2013,2,1,1,10) 
+            let moisInt = 0;
+            switch (mois) {
+                case 'Janvier':
+                    moisInt = 0; break;
+                case 'Fevrier':
+                    moisInt = 1; break;
+                case 'Mars':
+                    moisInt = 2; break;
+                case 'Avril':
+                    moisInt = 3; break;
+                case 'Mai':
+                    moisInt = 4; break;
+                case 'Juin':
+                    moisInt = 5; break;
+                case 'Juillet':
+                    moisInt = 6; break;
+                case 'Aout':
+                    moisInt = 7; break;
+                case 'Septembre':
+                    moisInt = 8; break;
+                case 'Octobre':
+                    moisInt = 9; break;
+                case 'Novembre':
+                    moisInt = 10; break;
+                case 'Decembre':
+                    moisInt = 11; break;
+                default:
+                    console.log('Sorry, we are out of ' + mois + '.');
             }
-    
-            this.attribute = function (key, val) {
-                if (val === undefined) return this.node.getAttribute(key);
-                this.node.setAttribute(key, val);
-            };
-    
-            this.getPoint = function (i) {
-                return pointList[i]
-            };
-    
-            this.setPoint = function (i, x, y) {
-                pointList[i] = [x, y];
-                this.attribute('points', build(pointList));
-            };
-    
-            this.points = function () {
-                for (var i = 0, l = arguments.length; i < l; i += 2) {
-                    pointList.push([arguments[i], arguments[i + 1]]);
-                }
-                this.attribute('points', build(pointList));
-            };
-    
-            this.points.apply(this, arguments);
-        }
-    
-        var polygon = new Polygon(0, 0, 100, 100, 200, 200);
-        polygon.setPoint(0, 50, 10); // set point and automatically re-build points
-        polygon.points(50, 50, 50, 100, 200, 100); // set everything
-        polygon.attribute('style', 'fill:lime');
-        polygon.node; // refer to the actual SVG element
-    
-        var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-        svg.appendChild(polygon.node);
-        // document.body.appendChild(svg);
+            heureMin = typeof heure === 'string'
+                ? MinutesheureMinutes.split(':')
+                : [0, 0]
 
-        var svg = document.getElementById('mySVG');
-        // svg.appendChild(svg);
-        //svg.appendChild(polygon)
-
-        function myFunction() {
-            document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
+            return new Date(parseInt(annee), moisInt, parseInt(jour), parseInt(heureMin[0]), parseInt(heureMin[1]))
         }
+
+        var maxVal = -1000;
+        var minVal = 1000;
+        data.forEach(e => {
+            // "Janvier 2019;Mar. 01;00:02;5.86;12:33;5.95; ;06:22;2.39;18:58;2.25;",
+            const space = e.split(' ');
+            const mois = space[0];
+            const jour = space[1].split(';');
+            const maree1 = space[2].split(';');
+            const maree2 = space[3].split(';');
+            const obj = {
+                day: jour[1] + ' ' + maree1[0] + ' ' + mois + ' ' + jour[0],
+                annee: parseInt(jour[0]),
+                mois: mois,
+                jour: maree1[0],
+                hauteHeure1: maree1[1],
+                hauteNiveau1: parseFloat(maree1[2]) || 5,
+                hauteHeure2: maree1[3],
+                hauteNiveau2: parseFloat(maree1[4]) || 5,
+                basseHeure1: maree2[1],
+                basseNiveau1: parseFloat(maree2[2]) || 5,
+                basseHeure2: maree2[3],
+                basseNiveau2: parseFloat(maree2[4]) || 5,
+                haute1: toDate(jour[0], space[0], maree1[0], maree1[1]),
+                haute2: toDate(jour[0], space[0], maree1[0], maree1[3]),
+                basse1: toDate(jour[0], space[0], maree1[0], maree2[1]),
+                basse2: toDate(jour[0], space[0], maree1[0], maree2[3]),
+            }
+            brestDataJson.push(obj);
+            //maxVal = Math.max(maxVal, obj.hauteNiveau1, obj.hauteNiveau2, obj.basseNiveau1, obj.basseNiveau2)
+            // 7.82
+            //minVal = Math.min(minVal, obj.hauteNiveau1, obj.hauteNiveau2, obj.basseNiveau1, obj.basseNiveau2)
+            // 0.35
+        });
+        // console.log('max', maxVal, 'min', minVal, brestDataJson);
+
+        Date.prototype.addHours = function (h) {
+            this.setHours(this.getHours() + h);
+            return this;
+        }
+
+        var minRange = 0;
+        var maxRange = 10;
+        // foireux
+        function getLevelValue() {
+            currentData = brestDataJson[document.getElementById('myRange').value]
+            const key = ['haute1', 'basse1', 'haute2', 'basse2']
+
+            const selectedDate = toDate(currentData.annee, currentData.mois, currentData.jour, currentTime, 0);
+
+            let interpolateValue = null;
+            let minHeight = 0;
+            let maxHeight = 20;
+
+            /*
+            if (currentData.haute1 > selectedDate) {
+                minHeight = currentData.hauteNiveau1 - .5 * currentData.hauteNiveau1
+                maxHeight = currentData.hauteNiveau1;
+                diffMins = Math.round((((currentData.haute1.addHours(-6) - selectedDate) % 86400000) % 3600000) / 60000);
+            } else if (currentData.haute1 < selectedDate && selectedDate < currentData.basse1) {
+                minHeight = currentData.basseNiveau1;
+                maxHeight = currentData.hauteNiveau1;
+                diffMins = Math.round((((currentData.haute1 - selectedDate) % 86400000) % 3600000) / 60000);
+            } else if (currentData.basse1 < selectedDate && selectedDate < haute2) {
+                minHeight = currentData.basseNiveau1;
+                maxHeight = currentData.hauteNiveau2;
+                diffMins = Math.round((((currentData.basse1 - selectedDate) % 86400000) % 3600000) / 60000);
+            } else if (currentData.haute2 < selectedDate && selectedDate < basse2) {
+                minHeight = currentData.basseNiveau2;
+                maxHeight = currentData.hauteNiveau2;
+                diffMins = Math.round((((currentData.haute2 - selectedDate) % 86400000) % 3600000) / 60000);
+            } else {
+                minHeight = currentData.basseNiveau2;
+                maxHeight = currentData.basseNiveau2 + .5 * currentData.basseNiveau2
+                diffMins = Math.round((((currentData.basse2.addHours(6) - selectedDate) % 86400000) % 3600000) / 60000);
+            }
+            */
+            minHeight = currentData.basseNiveau1;
+            maxHeight = currentData.hauteNiveau1;
+            diffMins = Math.round((((currentData.haute1 - selectedDate) % 86400000) % 3600000) / 60000);
+
+            let indice = Math.abs(maxHeight - minHeight) * diffMins / 360;
+
+            const res = [minHeight, minHeight, diffMins, indice];
+            return res;
+        }
+
+        var currentTime = 12;
+        function updateDate() {
+            const index = document.getElementById('myRange').value;
+            let msg = document.getElementById('currentDate');
+
+            let sea = document.getElementById('sea');
+            let calcRange = getLevelValue();
+            let seaHeight = document.getElementById('myRange').value
+
+            msg.innerHTML = brestDataJson[index].day + ' - ' + currentTime + 'h ' + calcRange[0] + 'm';
+            draw(calcRange)
+        }
+        updateDate();
+
+        var play = false;
+        var timer = null;
+        function playDate() {
+            play = !play;
+            if (play) {
+                document.getElementById('play').innerHTML = "Pause";
+                timer = setInterval(function () {
+                    document.getElementById('myRange').value++;
+                    updateDate();
+                }, 250);
+            } else {
+                clearTimeout(timer);
+                document.getElementById('play').innerHTML = "Play";
+            }
+        }
+
+
+        function draw(params) {
+            let url = document.location.href.split('?')
+            let colorSediment = url[1].split('=')
+
+            document.getElementById('draw-shapes').innerHTML = '';
+            var svg = SVG('draw-shapes')
+                .size('100%', 480)
+                .clear()
+
+            var rect = svg
+                .rect('100%', '100%')
+                .move(0, params[0] * 20 + '%')
+                .attr({ fill: 'blue' })
+
+            var width = window.innerWidth;
+            var ground = svg
+                .path("M 0,0 " + width + ",480 " + width + ",480 0,480 Z")
+                .attr({ fill: (colorSediment[1] === 'sable' ? 'yellow' : 'orange') })
+        }
+
     </script>
-
-    <script src="./lib/papaparse.js"></script>
-    <script src="./lib/perlin.js"></script>
 </head>
+
 <body class="w3-theme-d1">
-    <script type="javascript">
-        function update() {
-            let e = document.getElementById('ground');
-            console.log(e.points)
-        }
-        // Parse CSV string
-        const file = '127.0.0.1:8080/data/HTR__ABER_BENOIT_MEAN_RENEAT_157088410148608004.txt';
-        //var data = Papa.parse(file);
-    
-        // Convert back to CSV
-        //var csv = Papa.unparse(data);
-    
-        // Parse local CSV file
-        Papa.parse(file, {
-            complete: function(results) {
-                console.log("Finished:", results.data);
-            }
-        });
-    
-        // Stream big file in worker thread
-        /*
-        Papa.parse(bigFile, {
-            worker: true,
-            step: function(results) {
-                console.log("Row:", results.data);
-            }
-        });
-        */
-    </script>
-            
-    <div>
-        <svg viewBox="0 0 100 100" id="mySVG">
-                <polygon id="sea" class="sea" points="0,100 0,50 100,50 100,100" />
-                <polygon id="ground" class="ground1" points="0,100 0,50 100,80 100,100" />
-        </svg>
+    <div class="w3-center">
+        <h1>Ouestran ®</h1>
+        <h3>Identifier les espèces de l'estran</h3>
     </div>
 
-    <button onclick="update();">Update</button>
-    <p id="demo" onclick="Polygon()">Click me.</p>
+    <div id="draw-shapes"></div>
 
+    <div class="slidecontainer">
+        <h3 id="currentDate"></h3>
+        <input type="range" min="1" max="365" value="1" class="slider" id="myRange" onchange="updateDate();">
+        <button onclick="document.getElementById('myRange').value--; updateDate();">
+            <<</button> <button onclick="currentTime--; updateDate();">
+                <</button> <button id="play" onclick="playDate();">Play
+        </button>
+        <button onclick="currentTime++; updateDate();">></button>
+        <button onclick="document.getElementById('myRange').value++; updateDate();">>></button>
+
+        <button onclick="currentTime=8;updateDate();">8h</button>
+        <button onclick="currentTime=10;updateDate();">10h</button>
+        <button onclick="currentTime=12;updateDate();">12h</button>
+        <button onclick="currentTime=14;updateDate();">14h</button>
+        <button onclick="currentTime=16;updateDate();">16h</button>
+        <button onclick="currentTime=18;updateDate();">18h</button>
+    </div>
+
+    <div>
+        <img id="langouste" src="gif/langouste.gif" width=11% class="gifLangouste">
+    </div>
+
+    <div>
+        <img id="algue" src="gif/algue.gif" width="400px" class="gifAlgue">
+    </div>
+
+    <script>
+        updateDate();
+    </script>
 </body>
+
 </html>

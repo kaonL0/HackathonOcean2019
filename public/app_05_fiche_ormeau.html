@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Indextran, estran, mer, littoral, reeb, ocean, hackathon">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="B20">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Indextran</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+    .w3-theme-l5 {color:#000 !important; background-color:#e8f9fe !important}
+    .w3-theme-l4 {color:#000 !important; background-color:#b1e9fc !important}
+    .w3-theme-l3 {color:#000 !important; background-color:#63d4f9 !important}
+    .w3-theme-l2 {color:#fff !important; background-color:#16bef7 !important}
+    .w3-theme-l1 {color:#fff !important; background-color:#0789b5 !important}
+    .w3-theme-d1 {color:#fff !important; background-color:#03475d !important}
+    .w3-theme-d2 {color:#fff !important; background-color:#033f53 !important}
+    .w3-theme-d3 {color:#fff !important; background-color:#033748 !important}
+    .w3-theme-d4 {color:#fff !important; background-color:#022f3e !important}
+    .w3-theme-d5 {color:#fff !important; background-color:#022734 !important}
+
+    .w3-theme-light {color:#000 !important; background-color:#e8f9fe !important}
+    .w3-theme-dark {color:#fff !important; background-color:#022734 !important}
+    .w3-theme-action {color:#fff !important; background-color:#022734 !important}
+
+    .w3-theme {color:#fff !important; background-color:#044f67 !important}
+    .w3-text-theme {color:#044f67 !important}
+    .w3-border-theme {border-color:#044f67 !important}
+
+    .w3-hover-theme:hover {color:#fff !important; background-color:#044f67 !important}
+    .w3-hover-text-theme:hover {color:#044f67 !important}
+    .w3-hover-border-theme:hover {border-color:#044f67 !important}
+    .indent { text-indent: 10px; }
+
+    </style>
+
+</head>
+<body class="w3-theme-d1">
+<script src="https://unpkg.com/feather-icons"></script>
+    <!-- The Band Section -->
+    <div class="w3-container w3-content w3-center" style="max-width:800px" >
+        <h2 class="w3-wide">Ormeau</h2>
+        <p class="w3-opacity">Haliotis</h2>
+        <br/><br/>
+        <img src="images/fiche_ormeau.jpg"  width="120" height="120">
+    </div>
+
+    <div class="w3-theme-l1 w3-center">
+      <button class="w3-bar-item w3-button" onclick="openCity('Description_Ormeau')">
+        <i data-feather="eye"></i>
+      </button>
+      <button class="w3-bar-item w3-button" onclick="openCity('Tokyo')">
+        <i data-feather="anchor"></i>
+      </button>
+      <button class="w3-bar-item w3-button" onclick="openCity('Paris')">
+        <i data-feather="sidebar"></i>
+      </button>
+
+          </div>
+
+          <!--<div class="w3-third">
+            <i data-feather="eye"></i>
+          </div>
+          <div class="w3-third">
+            <i data-feather="anchor"></i>
+          </div>
+          <div class="w3-third">
+            <i data-feather="sidebar"></i>
+          </div>-->
+
+          <div id="Paris" class="w3-container city" style="display:none">
+            <p class="w3-justify">&nbsp &nbsp &nbsp &nbsp    Nom Breton: Ormel</h2>
+            <p class="w3-justify">&nbsp &nbsp &nbsp &nbsp    Durée de vie: 5 à 20 ans </h2>
+          </div>
+
+          <div id="Tokyo" class="w3-container city" style="display:none">
+            <p class="w3-justify">&nbsp &nbsp &nbsp &nbsp    Nom Breton: Ormel</h2>
+            <p class="w3-justify">&nbsp &nbsp &nbsp &nbsp    Durée de vie: 5 à 20 ans </h2>
+          </div>
+          <div id="Description_Ormeau" class="w3-container city w3-center" style="display:none">
+            </br>
+            <p class="w3-justify">&nbsp &nbsp &nbsp &nbsp    Nom Breton: Ormel</h2>
+            <p class="w3-justify">&nbsp &nbsp &nbsp &nbsp    Durée de vie: 5 à 20 ans </h2>
+            <p class="w3-justify">&nbsp &nbsp &nbsp &nbsp    Schéma: </h2>
+            </br></br></br></br>
+            <p class="w3-justify">&nbsp &nbsp &nbsp &nbsp    Poid: Environ 150g </h2>
+            <p class="w3-justify">&nbsp &nbsp &nbsp &nbsp    Taille: Jusqu'à 11cm </h2>
+            <p class="w3-justify">&nbsp &nbsp &nbsp &nbsp    Nourritures: Algues </h2>
+          </div>
+
+          <script>
+            feather.replace()
+          </script>
+
+      <br/>
+    </div>
+  </br>
+      <script>
+      function openCity(cityName) {
+        var i;
+        var x = document.getElementsByClassName("city");
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+        }
+        document.getElementById(cityName).style.display = "block";
+      }
+      </script>
+    </body>
+  </html>

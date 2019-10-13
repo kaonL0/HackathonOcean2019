@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Indextran, estran, mer, littoral, reeb, ocean, hackathon">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="B20">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Indextran</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+    .w3-theme-l5 {color:#000 !important; background-color:#e8f9fe !important}
+    .w3-theme-l4 {color:#000 !important; background-color:#b1e9fc !important}
+    .w3-theme-l3 {color:#000 !important; background-color:#63d4f9 !important}
+    .w3-theme-l2 {color:#fff !important; background-color:#16bef7 !important}
+    .w3-theme-l1 {color:#fff !important; background-color:#0789b5 !important}
+    .w3-theme-d1 {color:#fff !important; background-color:#03475d !important}
+    .w3-theme-d2 {color:#fff !important; background-color:#033f53 !important}
+    .w3-theme-d3 {color:#fff !important; background-color:#033748 !important}
+    .w3-theme-d4 {color:#fff !important; background-color:#022f3e !important}
+    .w3-theme-d5 {color:#fff !important; background-color:#022734 !important}
+
+    .w3-theme-light {color:#000 !important; background-color:#e8f9fe !important}
+    .w3-theme-dark {color:#fff !important; background-color:#022734 !important}
+    .w3-theme-action {color:#fff !important; background-color:#022734 !important}
+
+    .w3-theme {color:#fff !important; background-color:#044f67 !important}
+    .w3-text-theme {color:#044f67 !important}
+    .w3-border-theme {border-color:#044f67 !important}
+
+    .w3-hover-theme:hover {color:#fff !important; background-color:#044f67 !important}
+    .w3-hover-text-theme:hover {color:#044f67 !important}
+    .w3-hover-border-theme:hover {border-color:#044f67 !important}
+    .indent { text-indent: 10px; }
+
+    </style>
+
+</head>
+<body class="w3-theme-d1">
+<script src="https://unpkg.com/feather-icons"></script>
+    <!-- The Band Section -->
+    <div class="w3-container w3-content w3-center" style="max-width:800px" >
+        <h2 class="w3-wide">Goëmon Frisé</h2>
+        <p class="w3-opacity">Chondrus Crispus</h2>
+        <br/><br/>
+        <img src="images/fiche_ormeau.jpg"  width="120" height="120">
+    </div>
+
+    <div class="w3-theme-l1 w3-center">
+      <button class="w3-bar-item w3-button" onclick="openCity('Description_algue')">
+        <i data-feather="eye"></i>
+      </button>
+      <button class="w3-bar-item w3-button" onclick="openCity('peche_algue')">
+        <i data-feather="anchor"></i>
+      </button>
+      <button class="w3-bar-item w3-button" onclick="openCity('cuisine_algue')">
+        <i data-feather="sidebar"></i>
+      </button>
+
+          </div>
+
+          <!--<div class="w3-third">
+            <i data-feather="eye"></i>
+          </div>
+          <div class="w3-third">
+            <i data-feather="anchor"></i>
+          </div>
+          <div class="w3-third">
+            <i data-feather="sidebar"></i>
+          </div>-->
+
+          <div id="cuisine_algue" class="w3-container city" style="display:none">
+            <h2 class="w3-center">Recette </h2>
+            <p class="w3-center">Flan aux algues </p>
+            </br></br></br>
+            <h2 class="w3-justify">Ingrédients </h2>
+            <p class="w3-justify">Une poignée d'algue </p>
+            <p class="w3-justify">Un litre de lait (entier ou végétal) </p>
+            <p class="w3-justify">50 gramme de sucre </p>
+            <p class="w3-justify">2 à 3 cuillère à soupe de cacao en poudre non sucré </p>
+            </br></br></br>
+            <h2 class="w3-justify">Étapes </h2>
+            <p class="w3-justify">1-Rincez plusieurs fois les algues à l'eau douce </p>
+            <p class="w3-justify">2-Faire chauffer le lait </p>
+            <p class="w3-justify">3-Mettre les algues dans le lait bouillant </p>
+            <p class="w3-justify">4-Laissez cuire dans le lait pendant une demi-heure </p>
+            <p class="w3-justify">5-Ajoutez le sucre et le chocolat </p>
+            <p class="w3-justify">6-Filtrer la préparation </p>
+            <p class="w3-justify">7-Placer au moins 2 heures au frigo </p>
+
+          </div>
+
+          <div id="peche_algue" class="w3-container city" style="display:none">
+            <h2 class="w3-center">Conditions d'observation </h2>
+            <p class="w3-justify">Lieux: Partout en Bretagne </p>
+            <p class="w3-justify">Marée: De la mi-marée à la marée basse </p>
+            <h2 class="w3-center">Précautions </h2>
+            <a class="w3-justify" href="http:/baignades.sante.gouv.fr"> Vérifier la qualité de l'eau en cliquant ici</a>
+            <p class="w3-justify">Recolter avant l'heure de la marée basse</p>
+            <p class="w3-justify">Vérifier que le coefficient de marée est au minimum à 80</p>
+            <h2 class="w3-center">Protections </h2>
+            <p class="w3-justify">Récolte uniquement du 1er mai au 31 Octobre</p>
+            <p class="w3-justify">Récolte à la main</p>
+            <p class="w3-justify">Ne pas arracher le crampon de l'algue <p>
+            <p class="w3-justify">Ne ramasser que les algues fixées</p>
+            <p class="w3-justify">Ne jamais racler le rocher avec un outil</p>
+
+
+
+          </div>
+          <div id="Description_algue" class="w3-container city w3-center" style="display:none">
+            </br>
+            <p class="w3-justify">&nbsp &nbsp &nbsp &nbsp    Nom Breton: Pioka</h2>
+
+            <p class="w3-justify">&nbsp &nbsp &nbsp &nbsp    Durée de vie: 2 à 3ans </h2>
+            <p class="w3-justify">&nbsp &nbsp &nbsp &nbsp    Schéma: </h2>
+            </br></br></br></br>
+            <p class="w3-justify">&nbsp &nbsp &nbsp &nbsp    Taille: De 10 à 15cm </h2>
+            <p class="w3-justify">&nbsp &nbsp &nbsp &nbsp    Alimentation: Algue photosynthétique </h2>
+          </div>
+
+          <script>
+            feather.replace()
+          </script>
+
+      <br/>
+    </div>
+  </br>
+      <script>
+      function openCity(cityName) {
+        var i;
+        var x = document.getElementsByClassName("city");
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+        }
+        document.getElementById(cityName).style.display = "block";
+      }
+      </script>
+    </body>
+  </html>
