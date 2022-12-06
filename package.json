@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/kaonL0/HackathonOcean2019#readme",
   "dependencies": {
-    "http-server": "^0.11.1"
+    "http-server": "^0.11.2"
   }
 }
